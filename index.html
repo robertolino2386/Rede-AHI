@@ -481,16 +481,14 @@
         ws.getCell(ref).font = { bold: true };
       });
 
-      ['C2', 'C3', 'C4', 'C5', 'J7', 'K7', 'L7'].forEach(ref => pintarCelula(ws.getCell(ref), '#FFF2CC'));
-      ws.getCell('G2').fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFFFFF' } };
+      ['C2', 'C3', 'C4', 'C5', 'J7'].forEach(ref => pintarCelula(ws.getCell(ref), '#FFF2CC'));tCell('G2').fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFFFFF' } };
 
       const headers = [
         'RESERVA ATLANTICA', 'NOME DO HOSPEDE', 'CHECK IN', 'CHECK OUT',
         'VALOR DA DIÁRIA', 'DIÁRIAS', 'VALOR TOTAL', 'COMISSÃO', 'VALIDAÇÃO HOTEL'
       ];
 
-      const startCols = ['A', 'B', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-      headers.forEach((header, index) => {
+      const startCconst startCols = ['B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];rs.forEach((header, index) => {
         const cell = ws.getCell(`${startCols[index]}6`);
         cell.value = header;
         cell.font = { bold: true };
@@ -498,14 +496,9 @@
         if (['H', 'I', 'J'].includes(startCols[index])) pintarCelula(cell, '#E7E6E6');
       });
 
-      ws.mergeCells('J6:L6');
-      pintarCelula(ws.getCell('J6'), '#E7E6E6');
-      ws.getCell('J6').alignment = { horizontal: 'center' };
+      
 
-      linhas.forEach((item, index) => {
-        const linhaExcel = index + 7;
-        ws.getCell(`A${linhaExcel}`).value = item.ccpp;
-        ws.getCell(`B${linhaExcel}`).value = item.confirmacao;
+      linhs.getCell(`B${linhaExcel}`).value = item.confirmacao;
         ws.getCell(`C${linhaExcel}`).value = item.hospede;
         ws.getCell(`D${linhaExcel}`).value = item.checkIn;
         ws.getCell(`E${linhaExcel}`).value = item.checkOut;
@@ -518,18 +511,13 @@
         formatarData(ws.getCell(`D${linhaExcel}`));
         formatarData(ws.getCell(`E${linhaExcel}`));
         ['F', 'G', 'H', 'I'].forEach(col => formatarMoeda(ws.getCell(`${col}${linhaExcel}`)));
-        ['J', 'K', 'L'].forEach(col => pintarCelula(ws.getCell(`${col}${linhaExcel}`), '#FFF2CC'));
+        pintarCelula(ws.getCell(`J${linhaExcel}`), '#FFF2CC');
       });
 
       const ultimaLinha = linhas.length + 6;
-      for (let row = 6; row <= ultimaLinha; row++) {
-        for (let col = 1; col <= 12; col++) {
-          aplicarBorda(ws.getCell(row, col));
-          ws.getCell(row, col).alignment = { vertical: 'middle' };
-        }
-      }
-
-      ['C2', 'C3', 'C4', 'C5'].forEach(ref => pintarCelula(ws.getCell(ref), '#FFF2CC'));
+      for (let row = 6; row <= ultpintarCelula(ws.getCell(`J${linhaExcel}`), '#FFF2CC');getCell(row, col));
+          ws.getCell(row, col).alignment = for (let row = 6; row <= ultimaLinha; row++) {
+        for (let col = 1; col <= 10; col++) {tarCelula(ws.getCell(ref), '#FFF2CC'));
 
       ws.getRow(6).height = 22;
       ws.getRow(2).height = 20;
@@ -544,10 +532,7 @@
 
       const buffer = await workbook.xlsx.writeBuffer();
       return buffer;
-    }
-
-    arquivoInput.addEventListener('change', () => {
-      arquivoSelecionado = arquivoInput.files[0];
+  ws.getColumn('J').width = 28;s[0];
       zipConvertido = null;
       baixarBtn.disabled = true;
 
@@ -593,7 +578,7 @@
         }
 
         zipConvertido = await zip.generateAsync({ type: 'blob' });
-        mostrarMensagem(`${ccpps.length} arquivo(s) gerado(s) com sucesso. Clique em Baixar ZIP para salvar.`, 'sucesso');
+   const nomeArquivo = `Planilha_AHI_${ccpp}.xlsx`;ado(s) com sucesso. Clique em Baixar ZIP para salvar.`, 'sucesso');
         baixarBtn.disabled = false;
       } catch (erro) {
         mostrarMensagem('Não foi possível converter este arquivo. Selecione a planilha correta e tente novamente.', 'erro');
